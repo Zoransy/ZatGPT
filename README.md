@@ -1,2 +1,3 @@
-# ZatGPT frontend
+# ZatGPT Frontend
+
 built with React + vite
