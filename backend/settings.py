@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "ZatGPT",
+    'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 # 中间件配置
@@ -39,6 +41,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 # URL 配置
@@ -77,6 +80,19 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'ZatGPT.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
 
 # 密码验证
 AUTH_PASSWORD_VALIDATORS = [
