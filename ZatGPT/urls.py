@@ -9,4 +9,5 @@ urlpatterns = [
     path('create-superadmin/', views.create_superadmin, name='create_superadmin'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('user-info/', views.user_info, name='user_info'),
 ]
