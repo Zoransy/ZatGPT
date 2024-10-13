@@ -1,0 +1,21 @@
+.register-container {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    align-items: center;  /* 垂直居中 */
+    height: 100vh;  /* 使容器占满整个页面 */
+    background-color: #f0f2f5;  /* 背景颜色 */
+}
+
+.register-form-wrapper {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.register-form-wrapper h2 {
+    text-align: center;  /* 标题居中 */
+    margin-bottom: 24px;  /* 增加下边距 */
+}
