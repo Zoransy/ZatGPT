@@ -29,13 +29,15 @@
     text-align: right;
     margin: 25px 500px;
     color: blue;
+    word-wrap: break-word;
     font-size: 15px; /* 用户消息字体调大 */
 }
 
 .assistant-message {
     text-align: left;
     margin: 25px 500px;
-    color: green;
+    color: black;
+    word-wrap: break-word;
     font-size: 15px; /* 助手消息字体调大 */
 }
 
@@ -71,4 +73,23 @@
     padding: 16px; /* 为按钮增加一些内边距 */
     background-color: #001529; /* 保持背景颜色一致 */
     margin-bottom: 10px; /* 和历史聊天记录之间增加间距 */
+}
+
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 让其高度撑满父元素 */
+    text-align: center;
+}
+
+.welcome-message h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.welcome-message h3 {
+    font-size: 24px;
+    color: #666;
 }
