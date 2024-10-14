@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
-import ChatPage from './pages/HomePage/ChatPage.jsx';
+import ChatPage from './pages/ChatPage/ChatPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
-import ProtectedRoute from './components/ProtectedRoute.jsx';  // 导入受保护的路由组件
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import AdminPage from "./pages/AdminPage/AdminPage.jsx";  // 导入受保护的路由组件
 
 function App() {
     return (
@@ -16,6 +17,14 @@ function App() {
                     element={
                         <ProtectedRoute>
                             <ChatPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedRoute>
+                            <AdminPage />
                         </ProtectedRoute>
                     }
                 />

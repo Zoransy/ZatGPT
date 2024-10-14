@@ -1,0 +1,21 @@
+/* Header 样式 */
+.header {
+    background-color: #333;
+    text-align: right;
+    padding-right: 20px;
+    color: white;
+}
+
+/* 表格工具栏的样式 */
+.table-toolbar {
+    margin-bottom: 16px;
+}
+
+/* 分页组件居中对齐 */
+.pagination-wrapper {
+    margin-top: 16px;
+}
+
+.menu-countainer {
+    margin-top: 16px;
+}

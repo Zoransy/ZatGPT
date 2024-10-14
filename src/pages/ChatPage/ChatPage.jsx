@@ -211,7 +211,7 @@ const ChatPage = () => {
                         {!hasSentMessage ? (
                             <div className="welcome-message">
                                 <h1>Welcome to ZatGPT!</h1>
-                                <h3>How can I assist you today?</h3>
+                                <h3>How can I help you today?</h3>
                             </div>
                         ) : (
                             messages.map((message, index) => (
