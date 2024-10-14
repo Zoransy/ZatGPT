@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import ChatPage from './pages/HomePage/ChatPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
@@ -10,8 +10,9 @@ function App() {
         <Router>
             <Routes>
                 {/* 受保护的主页路由 */}
+                <Route path="/" element={<Navigate to="/chat" replace />} />
                 <Route
-                    path="/"
+                    path="/chat"
                     element={
                         <ProtectedRoute>
                             <ChatPage />

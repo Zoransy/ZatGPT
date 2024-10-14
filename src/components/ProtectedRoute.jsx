@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import {getUserInfo} from "../services/UserAuth.jsx"; // 引入封装好的方法
+import { getUserInfo } from "../services/UserAuth.jsx"; // 引入封装好的方法
 
 const ProtectedRoute = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);  // 初始状态为 null，表示尚未确定身份状态

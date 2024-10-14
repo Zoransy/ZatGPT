@@ -93,3 +93,14 @@
     font-size: 24px;
     color: #666;
 }
+
+.menu-item-title {
+    white-space: nowrap;         /* 防止换行 */
+    overflow: hidden;            /* 隐藏超出显示区域的内容 */
+    text-overflow: ellipsis;     /* 超出部分显示省略号 */
+}
+
+.side-bar {
+    height: 100vh;
+    overflow-y: auto;
+}

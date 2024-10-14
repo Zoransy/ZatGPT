@@ -16,8 +16,7 @@ const LoginPage = () => {
         try {
             const response = await login(username, password);
             message.success('Login successful!');
-            navigate('/');  // 登录成功后重定向到主页
-            console.log(response);
+            navigate('/');
         } catch (err) {
             message.error('Login failed. Please check your credentials.');
         } finally {
