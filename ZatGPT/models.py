@@ -39,3 +39,23 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.username
+
+
+class Session(models.Model):
+    session_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # 会话ID
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  # 发起用户
+    start_time = models.DateTimeField(auto_now_add=True)  # 会话开始时间
+
+    def __str__(self):
+        return f'Session {self.session_id} by {self.user.username}'
+
+
+class Message(models.Model):
+    message_id = models.AutoField(primary_key=True)  # 对话记录ID
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)  # 关联会话ID
+    role = models.CharField(max_length=10)  # 消息发送方（'system', 'user', 'assistant'）
+    content = models.TextField()  # 消息内容
+    timestamp = models.DateTimeField(auto_now_add=True)  # 消息时间戳
+
+    def __str__(self):
+        return f'{self.role}: {self.content[:50]}...'
