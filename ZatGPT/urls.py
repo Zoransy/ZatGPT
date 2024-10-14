@@ -18,5 +18,8 @@ urlpatterns = [
     path('get-sessions/', views.get_sessions, name='get-sessions'),
     path('send-message/', views.send_message, name='send-message'),
     path('get-messages/<uuid:session_id>/', views.get_messages, name='get-messages'),
+    path('check-admin-permission/', views.check_admin_permission, name='check-admin-permission'),
+    path('get-all-users/', views.get_all_users, name='get_all_users'),
+    path('update-user-permissions/', views.update_user_permissions, name='update_user_permissions'),
 ]
 

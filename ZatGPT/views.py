@@ -42,7 +42,9 @@ def login(request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
-        return Response({'message': 'Login successful!'}, status=status.HTTP_200_OK)
+        if user.is_active:
+            return Response({'message': 'Login successful!'}, status=status.HTTP_200_OK)
+
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -171,3 +173,58 @@ def create_session(request):
     Message.objects.create(session=session, role='system', content=system_prompt)
 
     return JsonResponse({"session_id": session.session_id}, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  # 确保用户已登录
+def check_admin_permission(request):
+    user = request.user
+    if user.is_superuser:
+        return Response({'is_admin': True, 'role': 'superuser'})
+    elif user.is_staff:
+        return Response({'is_admin': True, 'role': 'staff'})
+    else:
+        return Response({'is_admin': False}, status=status.HTTP_403_FORBIDDEN)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])  # 确保用户已登录
+def get_all_users(request):
+    users = User.objects.values('uuid', 'username', 'email', 'is_active', 'is_staff', 'is_superuser')
+    return JsonResponse(list(users), safe=False, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])  # 确保用户已登录
+def update_user_permissions(request):
+    user = request.user  # 当前请求的用户
+    data = request.data
+
+    try:
+        # 获取被更新的用户
+        target_user = User.objects.get(uuid=data.get('uuid'))
+    except User.DoesNotExist:
+        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    # 如果当前用户是超级管理员，可以更新所有字段
+    if user.is_superuser:
+        if 'is_active' in data:
+            target_user.is_active = data['is_active']
+        if 'is_staff' in data:
+            target_user.is_staff = data['is_staff']
+        if 'is_superuser' in data:
+            target_user.is_superuser = data['is_superuser']
+        target_user.save()
+        return Response({'message': 'Permissions updated successfully'}, status=status.HTTP_200_OK)
+
+    # 如果当前用户是普通管理员，只能更新 is_staff，不能更新其他字段
+    elif user.is_staff:
+        if 'is_staff' in data:
+            target_user.is_staff = data['is_staff']
+            target_user.save()
+            return Response({'message': 'Permissions updated successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'You do not have permission to modify this field.'}, status=status.HTTP_403_FORBIDDEN)
+
+    # 非管理员无权进行修改
+    return Response({'error': 'You do not have permission to perform this action.'}, status=status.HTTP_403_FORBIDDEN)
