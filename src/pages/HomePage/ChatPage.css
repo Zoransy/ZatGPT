@@ -1,0 +1,74 @@
+.chat-header {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.chat-title {
+    font-size: 22px;
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 64px);
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 15px; /* 调整聊天消息区域的字体大小 */
+}
+
+.user-message {
+    text-align: right;
+    margin: 25px 500px;
+    color: blue;
+    font-size: 15px; /* 用户消息字体调大 */
+}
+
+.assistant-message {
+    text-align: left;
+    margin: 25px 500px;
+    color: green;
+    font-size: 15px; /* 助手消息字体调大 */
+}
+
+.chat-input-container {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px; /* 增加输入框容器的内边距 */
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input-container textarea {
+    flex: 1;
+    padding: 10px; /* 增加输入框的内边距 */
+    font-size: 16px; /* 增加输入框的字体大小 */
+    height: 50px; /* 增大输入框的高度 */
+    max-height: 80px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.chat-input-container button {
+    height: 50px; /* 调整按钮的高度 */
+    font-size: 16px; /* 调整按钮文本的大小 */
+    padding: 0 20px; /* 增加按钮的左右内边距 */
+}
+
+.new-chat-button {
+    padding: 16px; /* 为按钮增加一些内边距 */
+    background-color: #001529; /* 保持背景颜色一致 */
+    margin-bottom: 10px; /* 和历史聊天记录之间增加间距 */
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage.jsx';
+import ChatPage from './pages/HomePage/ChatPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';  // 导入受保护的路由组件
@@ -14,7 +14,7 @@ function App() {
                     path="/"
                     element={
                         <ProtectedRoute>
-                            <HomePage />
+                            <ChatPage />
                         </ProtectedRoute>
                     }
                 />

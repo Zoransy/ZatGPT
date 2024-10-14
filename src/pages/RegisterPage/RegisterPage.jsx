@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Typography, message } from 'antd';  // 引入 Ant Design 组件
-import { register } from '../../services/userauth.jsx';
+import { register } from '../../services/UserAuth.jsx';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';  // 用于自定义样式
 

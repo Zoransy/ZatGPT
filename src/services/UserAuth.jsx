@@ -43,7 +43,7 @@ export const register = async (username, password, email) => {
 
 // 获取用户信息服务：需要携带 JWT Token
 export const getUserInfo = async () => {
-    const accessToken = await refreshAccessToken();  // 从 localStorage 获取 access token
+    const accessToken = localStorage.getItem('access_token');  // 从 localStorage 获取 access token
 
     if (!accessToken) {
         throw new Error("No access token found, user might not be authenticated");
